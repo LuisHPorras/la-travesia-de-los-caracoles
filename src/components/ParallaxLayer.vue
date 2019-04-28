@@ -1,11 +1,11 @@
 <template>
   <div
     class="parallax__layer"
-    :class="[
-    'parallax__layer--' + position
-    ]"
+    :class="['parallax__layer--' + position]"
   >
-    <slot></slot>
+    <transition name="fade">
+      <slot v-on:load="onLoaded" v-show="loaded"></slot>
+    </transition>
   </div>
 </template>
 
@@ -16,6 +16,15 @@ export default {
     position: {
       type: String,
       default: 'base'
+    },
+    loaded: {
+      type: Boolean,
+      default: false
+    }
+  },
+  methods: {
+    onLoaded () {
+      this.loaded = true
     }
   }
 }
@@ -28,30 +37,40 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
+    transform-style: preserve-3d;
   }
 
   .parallax__layer--fore {
     -webkit-transform: translateZ(90px) scale(.7);
     transform: translateZ(90px) scale(.7);
-    /* z-index: 5; */
   }
 
   .parallax__layer--base {
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
-    /* z-index: 4; */
     background: rgb(255, 255, 255, 0);
   }
 
   .parallax__layer--back {
     -webkit-transform: translateZ(-300px) scale(2);
     transform: translateZ(-300px) scale(2);
-    /* z-index: 3; */
   }
 
   .parallax__layer--deep {
     -webkit-transform: translateZ(-600px) scale(3);
     transform: translateZ(-600px) scale(3);
-    /* z-index: 2; */
   }
+
+/*  Fade in transition */
+.fade-enter-active {
+  transition: opacity 3s ease-in-out;
+}
+
+.fade-enter-to {
+  opacity: 1;
+}
+
+.fade-enter {
+  opacity: 0;
+}
 </style>

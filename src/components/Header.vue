@@ -4,20 +4,21 @@
         <el-popover
           placement="bottom"
           trigger="click"
-          width="500"
           v-model="visible">
+          <!-- <a class="plain-link" href="#group1">La Haya</a>
+          <a class="plain-link" href="#group1">La Haya</a>
+          <a class="plain-link" href="#group1">La Haya</a> -->
           <div class="map">
             <el-row>
-              <el-col :span="4">
-                <el-button icon="el-icon-location" @click="visible = false" circle></el-button>
+              <el-col :span="8">
+                <a class="plain-link" href="#group1">La Haya</a>
               </el-col>
-              <el-col :span="4">
-                <el-button icon="el-icon-location" @click="visible = false" circle></el-button>
+              <el-col :span="8">
+                <a class="plain-link" href="#group2">Rotterdam</a>
               </el-col>
-              <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
-              <el-col :span="4"><div class="grid-content bg-purple-light"></div></el-col>
-              <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
-              <el-col :span="4"><div class="grid-content bg-purple-light"></div></el-col>
+              <el-col :span="8">
+                <a class="plain-link" href="#group3">Amberess</a>
+              </el-col>
             </el-row>
           </div>
           <el-button icon="el-icon-menu" slot="reference"></el-button>
@@ -72,11 +73,19 @@ export default {
     font-size: 30px;
   }
 
+  .plain-link:link, .plain-link:visited {
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    text-align: center;
+    margin: 5px;
+  }
+
   .map {
-    background-image: url("../assets/anome.jpeg");
+    /* background-image: url("../assets/anome.jpeg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 500px;
+    height: 500px; */
   }
 </style>

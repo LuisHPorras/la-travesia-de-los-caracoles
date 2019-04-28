@@ -5,7 +5,14 @@
       <label><input type="checkbox" v-model="checked"> Debug</label>
     </div>
 
-    <div class="parallax" v-bind:class="{'debug-on': checked}">
+    <div
+      class="parallax"
+      :class="{
+        'debug-on': checked,
+        'is-horizontal': horizontal
+      }"
+      :style="{perspective: perspective + 'px', '-webkit-perspective': perspective + 'px'}"
+    >
       <slot></slot>
     </div>
   </div>
@@ -14,6 +21,13 @@
 <script>
 export default {
   name: 'Parallax',
+  props: {
+    perspective: {
+      type: Number,
+      default: 300
+    },
+    horizontal: Boolean
+  },
   data () {
     return {
       checked: false
@@ -28,13 +42,16 @@ export default {
     position: absolute;
     height: 100%;
     width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     white-space: nowrap;
-    -webkit-perspective: 300px;
-    perspective: 300px;
     scroll-behavior: smooth;
     font-size: 200%;
+  }
+
+  .is-horizontal {
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 
   /* Debugger styles - used to show the effect
@@ -43,13 +60,13 @@ export default {
     position: fixed;
     top: 0;
     left: .5em;
-    z-index: 999; 
+    z-index: 999;
     background: rgba(0,0,0,.85);
     color: #fff;
     padding: .5em;
     border-radius: 0 0 5px 5px;
   }
-  .debug-on .parallax__group {
+  .debug-on .parallax__layer {
     -webkit-transform: translate3d(0, 400px, -800px) rotateX(30deg);
     transform: translate3d(0, 700px, -800px) rotateX(-30deg);
   }
@@ -57,7 +74,7 @@ export default {
     box-shadow: 0 0 0 2px #000;
     opacity: 0.9;
   }
-  .parallax__group {
+  .parallax__layer {
     -webkit-transition: -webkit-transform 0.5s;
     transition: transform 0.5s;
   }

@@ -10,28 +10,50 @@
           <div class="title">La travesía de los caracoles</div>
         </ParallaxLayer>
         <ParallaxLayer position="base" >
-          <div class="drawing">
+          <img style="width: 100%; height: 100%" src="../assets/caracol.png" alt="Caracol">
+          <!-- <div class="drawing">
             <div class="floating">
-              <img src="../assets/caracoles-pompas.png" alt="CaracolEnPompa">
+              <img src="../assets/caracol.png" alt="CaracolEnPompa">
             </div>
-          </div>
+          </div> -->
         </ParallaxLayer>
       </ParallaxGroup>
 
       <ParallaxGroup id="group2" depth="3">
         <ParallaxLayer position="base">
-          <img style="width: 100%; height: 100%" src="../assets/near-background.png" alt="Bosque">
-        </ParallaxLayer>
-        <ParallaxLayer position="deep">
-          <img style="width: 100%; height: 100%" src="../assets/far-background.png" alt="BosqueProfundo">
+          <img style="width: 100%; height: 100%" src="../assets/1.png" alt="Pared1">
         </ParallaxLayer>
       </ParallaxGroup>
 
       <ParallaxGroup id="group3" depth="4">
         <ParallaxLayer position="base">
-          <img style="width: 100%; height: 100%" src="../assets/near-background.png" alt="Bosque">
+          <img style="width: 100%; height: 100%" src="../assets/2.png" alt="Pared2">
         </ParallaxLayer>
       </ParallaxGroup>
+    
+      <ParallaxGroup id="group4" depth="3">
+        <ParallaxLayer position="base">
+            <img style="width: 100%; height: 100%" src="../assets/3.png" alt="Pared3">
+        </ParallaxLayer>
+      </ParallaxGroup>
+
+      <ParallaxGroup id="group5" depth="2">
+        <ParallaxLayer position="base">
+          <img style="width: 200%; height: 100%" src="../assets/4puertas.png" alt="Puertas">
+        </ParallaxLayer>
+        <ParallaxLayer position="back">
+          <img style="padding: 0 25%; width: 100%; height: 100%" src="../assets/interior1.png" alt="Interior1">
+        </ParallaxLayer>
+        <ParallaxLayer position="deep">
+          <img style="padding: 0 15%; width: 100%; height: 100%" src="../assets/interior2.png" alt="Interior2">
+        </ParallaxLayer>
+      </ParallaxGroup>  
+      <ParallaxGroup></ParallaxGroup>  
+      <ParallaxGroup id="group4" depth="3">
+        <ParallaxLayer position="base">
+            <img style="width: 100%; height: 100%" src="../assets/3.png" alt="Pared3">
+        </ParallaxLayer>
+      </ParallaxGroup>  
     </Parallax>
   </div>
 </template>
@@ -49,9 +71,19 @@ export default {
     Parallax,
     ParallaxGroup,
     ParallaxLayer
-  }
+  },
+  mounted() {
+    var img_path = '../assets/';
+    var imgs = ['4puertas.png', '1.png', '2.png', '3.png', 'interior1.png', 'interior2.png'];
+    for (let i = 0; i < imgs.length; i++) {
+      const img_src = img_path + imgs[i];
+      let new_img = new Image();
+      new_img.src = img_src;
+    }
+  },
 }
 </script>
+
 
 <style>
 
@@ -89,6 +121,7 @@ export default {
     top: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+
   }
 
   .floating{

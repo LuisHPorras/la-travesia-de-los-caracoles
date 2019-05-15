@@ -1,10 +1,10 @@
 
 .el-button {
+  background-color: rgba(0, 0, 0, 0);
   border: none;
 }
 
-el-button:focus, el-button:hover{
-  color:rgb(96, 96, 96);
-  border-color: #FFF0;
+.el-button:focus, .el-button:hover{
+  color:rgb(0, 0, 0);
   background-color: #FFF0;
 }

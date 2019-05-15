@@ -40,8 +40,8 @@ export default {
   .parallax {
     /* height: 500px; fallback for older browsers */
     position: absolute;
-    height: 100%;
     width: 100%;
+    height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
     white-space: nowrap;

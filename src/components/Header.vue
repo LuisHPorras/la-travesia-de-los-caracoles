@@ -5,9 +5,6 @@
           placement="bottom"
           trigger="click"
           v-model="visible">
-          <!-- <a class="plain-link" href="#group1">La Haya</a>
-          <a class="plain-link" href="#group1">La Haya</a>
-          <a class="plain-link" href="#group1">La Haya</a> -->
           <div class="map">
             <el-row>
               <el-col :span="8">
@@ -21,7 +18,7 @@
               </el-col>
             </el-row>
           </div>
-          <el-button icon="el-icon-menu" slot="reference"></el-button>
+          <el-button class="el-button" icon="el-icon-menu" slot="reference"></el-button>
         </el-popover>
       </div>
       <div class="action">

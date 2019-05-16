@@ -31,12 +31,12 @@
           v-model="visible2">
           <p style="margin: 10px">Comparte este proyecto con los tuyos:</p>
           <div style="text-align: center; margin: 10px 0">
-            <facebook-share-button class="share-button" scale="2" />
-            <twitter-share-button class="share-button" scale="2" title="Documental: La travesía de los caracoles" />
-            <whatsapp-share-button class="share-button" scale="2" title="Documental: La travesía de los caracoles" />
-            <telegram-share-button class="share-button" scale="2" title="Documental: La travesía de los caracoles" />
-            <pinterest-share-button class="share-button" scale="2" />
-            <email-share-button class="share-button" scale="2" subject="Documental: La travesía de los caracoles" />
+            <facebook-share-button class="share-button" scale="2" url="https://latravesiadeloscaracoles.netlify.com/#/" />
+            <twitter-share-button class="share-button" scale="2" url="https://latravesiadeloscaracoles.netlify.com/#/" title="Documental: La travesía de los caracoles" />
+            <whatsapp-share-button class="share-button" scale="2" url="https://latravesiadeloscaracoles.netlify.com/#/" title="Documental: La travesía de los caracoles" />
+            <telegram-share-button class="share-button" scale="2" url="https://latravesiadeloscaracoles.netlify.com/#/" title="Documental: La travesía de los caracoles" />
+            <pinterest-share-button class="share-button" scale="2" url="https://latravesiadeloscaracoles.netlify.com/#/" />
+            <email-share-button class="share-button" scale="2" url="https://latravesiadeloscaracoles.netlify.com/#/" subject="Documental: La travesía de los caracoles" />
           </div>
           <el-button icon="el-icon-share" slot="reference"></el-button>
         </el-popover>

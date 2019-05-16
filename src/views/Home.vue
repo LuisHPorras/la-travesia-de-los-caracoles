@@ -1,65 +1,68 @@
 <template>
   <div class="background">
     <!-- User Actions -->
-    <transition name="fade5">
+    <transition name="slide-fade-actions">
       <Header v-on:load="onLoaded" v-show="loaded" />
     </transition>
 
     <!-- First parallax scene -->
-    <div class="container">
+    <div class="container1">
       <Parallax :perspective="300" horizontal>
-        <ParallaxGroup id="group1" :depth="5">
+        <ParallaxGroup :depth="5">
           <ParallaxLayer position="base" >
-            <transition name="fade5">
+            <transition name="slide-fade-title">
               <div v-on:load="onLoaded" v-show="loaded" class="title">La travesía de los caracoles</div>
             </transition>
           </ParallaxLayer>
           <ParallaxLayer position="base" >
-            <transition name="fade">
-              <img v-on:load="onLoaded" v-show="loaded" style="height: 100%" src="../assets/caracol.png" alt="Caracol">
+            <transition name="fade" >
+              <img class="float" v-on:load="onLoaded" v-show="loaded" style="height: 100%" src="../assets/images/caracol.png" alt="Caracol">
             </transition>
           </ParallaxLayer>
         </ParallaxGroup>
 
-        <ParallaxGroup id="group2" :depth="3">
+        <ParallaxGroup :depth="3">
           <ParallaxLayer position="base">
+            <!-- <div class="video">
+              <promo-v class="video-player-box" ref="videoPlayer" :options="playerOptions" />
+            </div> -->
             <div style="height: 100%; width: 100%; background-color: white" />
           </ParallaxLayer>
         </ParallaxGroup>
 
-        <ParallaxGroup id="group2" :depth="3">
+        <ParallaxGroup :depth="3">
           <ParallaxLayer position="base">
-            <img style="height: 100%" src="../assets/1.png" alt="Pared1">
+            <img style="height: 100%" src="../assets/images/1.png" alt="Pared1">
           </ParallaxLayer>
         </ParallaxGroup>
 
-        <ParallaxGroup id="group3" :depth="4">
+        <ParallaxGroup :depth="4">
           <ParallaxLayer position="base">
-            <img style="height: 100%" src="../assets/2.png" alt="Pared2">
+            <img style="height: 100%" src="../assets/images/2.png" alt="Pared2">
           </ParallaxLayer>
         </ParallaxGroup>
 
-        <ParallaxGroup id="group4" :depth="3">
+        <ParallaxGroup :depth="3">
           <ParallaxLayer position="base">
-              <img style="height: 100%" src="../assets/3.png" alt="Pared3">
+              <img style="height: 100%" src="../assets/images/3.png" alt="Pared3">
           </ParallaxLayer>
         </ParallaxGroup>
 
-        <ParallaxGroup id="group5" :depth="2">
+        <ParallaxGroup :depth="2">
           <ParallaxLayer position="base">
-            <img style="height: 100%" src="../assets/4puertas.png" alt="Puertas">
+            <img style="height: 100%" src="../assets/images/4puertas.png" alt="Puertas">
           </ParallaxLayer>
           <ParallaxLayer position="back">
-            <img style="padding: 0 25%; height: 100%" src="../assets/interior1.png" alt="Interior1">
+            <img style="padding: 0 25%; height: 100%" src="../assets/images/interior1.png" alt="Interior1">
           </ParallaxLayer>
           <ParallaxLayer position="deep">
-            <img style="padding: 0 15%; height: 100%" src="../assets/interior2.png" alt="Interior2">
+            <img style="padding: 0 15%; height: 100%" src="../assets/images/interior2.png" alt="Interior2">
           </ParallaxLayer>
         </ParallaxGroup>
         <ParallaxGroup></ParallaxGroup>
-        <ParallaxGroup id="group4" :depth="3">
+        <ParallaxGroup :depth="3">
           <ParallaxLayer position="base">
-              <img style="height: 100%" src="../assets/3.png" alt="Pared3">
+              <img style="height: 100%" src="../assets/images/3.png" alt="Pared3">
           </ParallaxLayer>
         </ParallaxGroup>
       </Parallax>
@@ -68,6 +71,9 @@
 </template>
 
 <script>
+import 'video.js/dist/video-js.css'
+import { videoPlayer } from 'vue-video-player'
+
 import Header from '../components/Header.vue'
 import Parallax from '../components/Parallax.vue'
 import ParallaxGroup from '../components/ParallaxGroup.vue'
@@ -77,14 +83,26 @@ export default {
   name: 'home',
   data: function () {
     return {
-      loaded: false
+      loaded: false,
+      playerOptions: {
+        // videojs options
+        muted: false,
+        language: 'es',
+        playbackRates: [0.7, 1.0, 1.5, 2.0],
+        sources: [{
+          type: 'video/mp4',
+          src: '../assets/videos/promo.mp4'
+        }],
+        poster: '../assets/images/poster-promo.png'
+      }
     }
   },
   components: {
     Header,
     Parallax,
     ParallaxGroup,
-    ParallaxLayer
+    ParallaxLayer,
+    'promo-v': videoPlayer
   },
   mounted () {
     var imgPath = '../assets/'
@@ -123,7 +141,7 @@ export default {
     align-content: center;
   }
 
-  .container {
+  .container1 {
     position: relative;
     width: 131vh;
     height: 100vh;
@@ -131,11 +149,19 @@ export default {
     margin: 0 calc((100vw - 133.33333333vh)/2);
   }
 
+  .video {
+    position: absolute;
+    left: 0;
+    top: 20vh;
+    height: 100%;
+    width: 100%;
+  }
+
   .title {
     text-align: center;
     position: absolute;
     left: 50%;
-    top: 85%;
+    top: 90%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
   }
@@ -150,45 +176,86 @@ export default {
 
   }
 
-  .floating{
-    -moz-animation-name: Floating;
-    -moz-animation-duration: 3s;
-    -moz-animation-iteration-count: infinite;
-    -moz-animation-timing-function: ease-in-out;
-    animation-name: Floating;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
+  .float {
+    -moz-animation: floating 3s ease-in-out infinite;
+    animation: floating 3s ease-in-out infinite;
   }
 
-  @-moz-keyframes Floating{
-    from {-moz-transform: translate(0, 0px); transform: translate(0, 0px);}
-    65% {-moz-transform: translate(0, 15px); transform: translate(0, 15px);}
-    to {-moz-transform: translate(0, -0px); transform: translate(0, -0px);}
+  @keyframes floating{
+    0% {
+      -moz-transform: translate(0, 0px);
+      transform: translate(0, 0px);
+    }
+    65% {
+      -moz-transform: translate(0, 15px);
+      transform: translate(0, 15px);
+    }
+    100% {
+      -moz-transform: translate(0, -0px);
+      transform: translate(0, -0px);
+    }
   }
 
   .fade-enter-active {
-    transition: opacity 3s ease-in-out;
+    /* transition: opacity 3s ease-in-out;
+     */
+    animation: delay-fade 4s ease-in-out;    
   }
 
-  .fade-enter-to {
+  @keyframes delay-fade{
+    0% {
+      opacity: 0;
+    }
+    48% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  /* .fade-enter-to {
     opacity: 1;
   }
 
   .fade-enter {
     opacity: 0;
+  } */
+
+  .slide-fade-title-enter-active {
+    animation: delay-slide-fade 2s ease;
+    /* transition: all 2s ease; */
   }
 
-  .fade5-enter-active {
-    transition: opacity 5s ease-in-out;
+  @keyframes delay-slide-fade{
+    0% {
+      -moz-transform: translate(-201px, 30px);
+      transform: translate(-201px, 30px);
+      opacity: 0;
+    }
+    50% {
+      -moz-transform: translate(-201px, 30px);
+      transform: translate(-201px, 30px);
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 
-  .fade5-enter-to {
-    opacity: 1;
+  /* .slide-fade-title-enter {
+    transform: translate(-200px, 100px);
+    opacity: 0;
+  } */
+
+  .slide-fade-actions-enter-active {
+    transition: all 0.8s ease;
   }
 
-  .fade5-enter {
+  .slide-fade-actions-enter {
+    transform: translateY(-30px);
     opacity: 0;
   }
 
+  
 </style>

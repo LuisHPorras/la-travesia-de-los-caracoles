@@ -1,6 +1,8 @@
 <template>
   <div class="actions">
       <div class="action">
+        <!-- <img class="buble" src="../assets/pompa_acciones.png" alt="PompaAcciones" />
+        <img class="buble2" src="../assets/pompa_acciones.png" alt="PompaAcciones" /> -->
         <el-popover
           placement="bottom"
           trigger="click"
@@ -27,10 +29,14 @@
           trigger="click"
           width="300"
           v-model="visible2">
-          <p>Are you sure to delete this?</p>
-          <div style="text-align: right; margin: 0">
-            <el-button size="mini" type="text" @click="visible2 = false">cancel</el-button>
-            <el-button type="primary" size="mini" @click="visible2 = false">confirm</el-button>
+          <p style="margin: 10px">Comparte este proyecto con los tuyos:</p>
+          <div style="text-align: center; margin: 10px 0">
+            <facebook-share-button class="share-button" scale="2" />
+            <twitter-share-button class="share-button" scale="2" title="Documental: La travesía de los caracoles" />
+            <whatsapp-share-button class="share-button" scale="2" title="Documental: La travesía de los caracoles" />
+            <telegram-share-button class="share-button" scale="2" title="Documental: La travesía de los caracoles" />
+            <pinterest-share-button class="share-button" scale="2" />
+            <email-share-button class="share-button" scale="2" subject="Documental: La travesía de los caracoles" />
           </div>
           <el-button icon="el-icon-share" slot="reference"></el-button>
         </el-popover>
@@ -39,7 +45,17 @@
 </template>
 
 <script>
+import { Facebook, Twitter, WhatsApp, Telegram, Pinterest, Email } from 'vue-socialmedia-share'
+
 export default {
+  components: {
+    'facebook-share-button': Facebook,
+    'twitter-share-button': Twitter,
+    'whatsapp-share-button': WhatsApp,
+    'telegram-share-button': Telegram,
+    'pinterest-share-button': Pinterest,
+    'email-share-button': Email
+  },
   data () {
     return {
       visible: false,
@@ -62,7 +78,7 @@ export default {
   }
 
   .action {
-    padding: 15px 20px;
+    padding: 15px 0;
     display: inline-block;
   }
 
@@ -78,6 +94,22 @@ export default {
     margin: 5px;
   }
 
+  .buble {
+    position: absolute;
+    height: 60px;
+    z-index: -1;
+    left: calc(50vw - 75px);
+    top: 10px;
+  }
+
+  .buble2 {
+    position: absolute;
+    height: 60px;
+    z-index: -1;
+    left: calc(50vw);
+    top: 10px;
+  }
+
   .map {
     /* background-image: url("../assets/anome.jpeg");
     background-position: center;
@@ -85,4 +117,9 @@ export default {
     background-repeat: no-repeat;
     height: 500px; */
   }
+
+  .share-button {
+    padding-right: 10px;
+  }
+
 </style>

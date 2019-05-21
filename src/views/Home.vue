@@ -23,9 +23,9 @@
 
         <ParallaxGroup :depth="3">
           <ParallaxLayer position="base">
-            <!-- <div class="video">
+            <div class="video">
               <promo-v class="video-player-box" ref="videoPlayer" :options="playerOptions" />
-            </div> -->
+            </div>
             <div style="height: 100%; width: 100%; background-color: white" />
           </ParallaxLayer>
         </ParallaxGroup>
@@ -197,9 +197,7 @@ export default {
   }
 
   .fade-enter-active {
-    /* transition: opacity 3s ease-in-out;
-     */
-    animation: delay-fade 4s ease-in-out;    
+    animation: delay-fade 4s ease-in-out;
   }
 
   @keyframes delay-fade{
@@ -214,17 +212,8 @@ export default {
     }
   }
 
-  /* .fade-enter-to {
-    opacity: 1;
-  }
-
-  .fade-enter {
-    opacity: 0;
-  } */
-
   .slide-fade-title-enter-active {
     animation: delay-slide-fade 2s ease;
-    /* transition: all 2s ease; */
   }
 
   @keyframes delay-slide-fade{
@@ -243,11 +232,6 @@ export default {
     }
   }
 
-  /* .slide-fade-title-enter {
-    transform: translate(-200px, 100px);
-    opacity: 0;
-  } */
-
   .slide-fade-actions-enter-active {
     transition: all 0.8s ease;
   }
@@ -257,5 +241,4 @@ export default {
     opacity: 0;
   }
 
-  
 </style>

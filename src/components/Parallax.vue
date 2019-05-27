@@ -7,8 +7,8 @@
 
   <div
     class="parallax"
-    @scroll="handleScroll($event)"
-    @wheel="verticalToHorizontal($event)"
+    @scroll="verticalToHorizontal($event)"
+    @wheel.prevent="verticalToHorizontal($event)"
     :class="{
       'debug-on': checked,
       'is-horizontal': horizontal
@@ -32,27 +32,18 @@ export default {
   },
   data () {
     return {
-      checked: false,
-      wheelHandled: false
+      checked: false
     }
   },
   methods: {
     verticalToHorizontal (event) {
-    	if (event.deltaY != 0) {
-        // Prevent scroll from bugging the wheel movement
-        this.wheelHandled = true
+      if (event.deltaY !== 0 && event.deltaY !== undefined) {
         // Manually scroll horizonally instead
-        this.$el.scroll(this.$el.scrollLeft + event.deltaY * 5, this.$el.scrollTop)
+        this.$el.scroll(this.$el.scrollLeft + event.deltaY * 10, this.$el.scrollTop)
         // Prevent vertical scroll
         event.preventDefault()
         // console.log('Deltas: (' + event.deltaX + ', ' + event.deltaY + ')')
         // console.log('Scroll: (' + this.$el.scrollLeft + ', ' + this.$el.scrollTop + ')')
-      }
-    },
-    handleScroll (event) {
-    	if (this.wheelHandled) {
-        setTimeout(function(){ this.wheelHandled = false }, 500);
-        event.preventDefault()
       }
     }
   }
@@ -76,7 +67,7 @@ export default {
     overflow-y: hidden;
   }
 
-  /* --------------------------------------------- 
+  /* ---------------------------------------------
       Debugger styles - used to show the effect
   --------------------------------------------- */
   .debug {

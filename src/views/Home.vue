@@ -28,9 +28,9 @@
 
         <ParallaxGroup id="g2" :depth="3">
           <ParallaxLayer position="base">
-            <!-- <div class="video">
+            <div class="video">
               <promo-v class="video-player-box" ref="videoPlayer" :options="playerOptions" />
-            </div> -->
+            </div>
             <div style="height: 100%; width: 100%; background-color: white" />
           </ParallaxLayer>
         </ParallaxGroup>

@@ -1,10 +1,10 @@
 <template>
   <div class="footer-actions">
       <div class="footer-action">
-        <a class="plain-link el-icon-arrow-left circle" @click="changeSlide('prev')" :href="'#' + prevSection" />
+        <a class="plain-link el-icon-arrow-left circle" @click="updateSectionButtons()" :href="'#' + prevSection" />
       </div>
       <div class="footer-action">
-        <a class="plain-link circle" @click="changeSlide('next')" :href="'#' + nextSection" >
+        <a class="plain-link circle" @click="updateSectionButtons()" :href="'#' + nextSection" >
           <div class="el-icon-arrow-right" style="{ vertical-align: 'middle' }"></div>
         </a>
       </div>
@@ -19,7 +19,6 @@ export default {
       nextSection: '',
       prevSection: '',
       currentSection: '',
-      indexCurrentSection: 0,
       sections: [
         'g1',
         'g2',
@@ -32,47 +31,33 @@ export default {
     }
   },
   methods: {
-    changeSlide (direction) {
-      console.log('Click, direction:' + direction)
-      console.log('On event, next:' + this.nextSection)
-      if (direction === 'next' && this.indexCurrentSection < 8) {
-        this.prevSection = this.sections[this.indexCurrentSection]
-        this.indexCurrentSection++
-        this.currentSection = this.sections[this.indexCurrentSection]
-        this.nextSection = this.sections[this.indexCurrentSection + 1]
-      } else if (direction === 'prev' && this.indexCurrentSection > 0) {
-        this.nextSection = this.sections[this.indexCurrentSection]
-        this.indexCurrentSection--
-        this.currentSection = this.sections[this.indexCurrentSection]
-        this.prevSection = this.sections[this.indexCurrentSection - 1]
-      }
-    },
     updateSectionButtons () {
-      console.log('Current section: ' + this.currentSection)
+      // console.log('Current section: ' + this.currentSection)
       for (let i = 0; i < this.sections.length; i++) {
         // Get the first section in the viewport
         if (this.isInViewport(document.getElementById(this.sections[i])) && this.currentSection !== this.sections[i]) {
+          // Save as current section
           this.currentSection = this.sections[i]
+          // Update next and prev, circular
           if (i > 0 && i < (this.sections.length - 1)) {
             this.prevSection = this.sections[i - 1]
             this.nextSection = this.sections[i + 1]
           } else if (i === 0) {
             this.prevSection = this.sections[this.sections.length - 1]
             this.nextSection = this.sections[i + 1]
-          } else if (i === this.sections.length) {
+          } else if (i === (this.sections.length - 1)) {
             this.prevSection = this.sections[i - 1]
             this.nextSection = this.sections[0]
           }
-          this.indexCurrentSection = i
-          console.log('Update section: ' + this.currentSection)
+          // console.log('Updated section: ' + this.currentSection)
         }
       }
     },
     isInViewport (elem) {
       var bounding = elem.getBoundingClientRect()
       return (
-        bounding.top >= 0 &&
-        bounding.left >= 0 &&
+        bounding.top >= -document.documentElement.clientHeight &&
+        bounding.left >= -document.documentElement.clientWidth &&
         bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
         bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
       )

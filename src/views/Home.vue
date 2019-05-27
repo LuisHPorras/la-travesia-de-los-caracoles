@@ -19,9 +19,9 @@
               <transition name="slide-fade-title">
                 <div v-on:load="onLoaded" v-show="loaded" class="title">La travesía de los caracoles</div>
               </transition>
-              <transition name="fade">
+              <!-- <transition name="fade">
                 <div v-on:load="onLoaded" v-show="loaded" class="advise1">Desliza horizontalmente</div>
-              </transition>
+              </transition> -->
             </div>
           </ParallaxLayer>
         </ParallaxGroup>
@@ -99,7 +99,7 @@ export default {
         playbackRates: [0.7, 1.0, 1.5, 2.0],
         sources: [{
           type: 'video/mp4',
-          src: '../assets/videos/promo.mp4'
+          src: '../assets/videos/new-house.mp4'
         }],
         poster: '../assets/images/poster-promo.png'
       }

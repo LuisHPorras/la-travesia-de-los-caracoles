@@ -1,21 +1,23 @@
 <template>
-  <div>
+  <!-- <div> -->
     <!-- Debug Mode -->
-    <div class="debug">
+    <!-- <div class="debug">
       <label><input type="checkbox" v-model="checked"> Debug</label>
-    </div>
+    </div> -->
 
-    <div
-      class="parallax"
-      :class="{
-        'debug-on': checked,
-        'is-horizontal': horizontal
-      }"
-      :style="{perspective: perspective + 'px', '-webkit-perspective': perspective + 'px'}"
-    >
-      <slot></slot>
-    </div>
+  <div
+    class="parallax"
+    @scroll="handleScroll($event)"
+    @wheel="verticalToHorizontal($event)"
+    :class="{
+      'debug-on': checked,
+      'is-horizontal': horizontal
+    }"
+    :style="{perspective: perspective + 'px', '-webkit-perspective': perspective + 'px'}"
+  >
+    <slot></slot>
   </div>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -30,7 +32,28 @@ export default {
   },
   data () {
     return {
-      checked: false
+      checked: false,
+      wheelHandled: false
+    }
+  },
+  methods: {
+    verticalToHorizontal (event) {
+    	if (event.deltaY != 0) {
+        // Prevent scroll from bugging the wheel movement
+        this.wheelHandled = true
+        // Manually scroll horizonally instead
+        this.$el.scroll(this.$el.scrollLeft + event.deltaY * 5, this.$el.scrollTop)
+        // Prevent vertical scroll
+        event.preventDefault()
+        // console.log('Deltas: (' + event.deltaX + ', ' + event.deltaY + ')')
+        // console.log('Scroll: (' + this.$el.scrollLeft + ', ' + this.$el.scrollTop + ')')
+      }
+    },
+    handleScroll (event) {
+    	if (this.wheelHandled) {
+        setTimeout(function(){ this.wheelHandled = false }, 500);
+        event.preventDefault()
+      }
     }
   }
 }
@@ -38,7 +61,6 @@ export default {
 
 <style>
   .parallax {
-    /* height: 500px; fallback for older browsers */
     position: absolute;
     width: 100%;
     height: 100%;
@@ -54,7 +76,8 @@ export default {
     overflow-y: hidden;
   }
 
-  /* Debugger styles - used to show the effect
+  /* --------------------------------------------- 
+      Debugger styles - used to show the effect
   --------------------------------------------- */
   .debug {
     position: fixed;

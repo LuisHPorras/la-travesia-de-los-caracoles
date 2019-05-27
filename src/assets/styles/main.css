@@ -1,10 +1,23 @@
 
 .el-button {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(255, 255, 255, 0.2);
+  color: rgba(0, 0, 0, 0.4);
   border: none;
+  padding: 0 2vw;
+  margin: 0 1vw;
 }
 
 .el-button:focus, .el-button:hover{
-  color:rgb(0, 0, 0);
+  color:rgba(0, 0, 0, 0.8);
   background-color: #FFF0;
+}
+
+.el-button i {
+  font-size: 4vh;
+}
+
+.circle {
+  border-radius: 100%;
+  width: 10vh;
+  height: 10vh;
 }

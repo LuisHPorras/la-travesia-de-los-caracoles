@@ -10,6 +10,8 @@ import '@/assets/styles/main.css'
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false
+// Vue.prototype.scrollX = window.scrollX
+// Vue.prototype.scrollY = window.scrollY
 
 new Vue({
   router,

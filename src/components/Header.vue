@@ -10,17 +10,23 @@
           <div class="map">
             <el-row>
               <el-col :span="8">
-                <a class="plain-link" href="#group1">La Haya</a>
+                <a class="plain-link" href="#g1">Portada</a>
               </el-col>
               <el-col :span="8">
-                <a class="plain-link" href="#group2">Rotterdam</a>
+                <a class="plain-link" href="#g4">Descripcion</a>
               </el-col>
               <el-col :span="8">
-                <a class="plain-link" href="#group3">Amberess</a>
+                <a class="plain-link" href="#g5">Juicio Montsanto</a>
+              </el-col>
+              <el-col :span="8">
+                <a class="plain-link" href="#g6">Lekker Nassu</a>
+              </el-col>
+              <el-col :span="8">
+                <a class="plain-link" href="#g7">Proximamente</a>
               </el-col>
             </el-row>
           </div>
-          <el-button class="el-button" icon="el-icon-menu" slot="reference"></el-button>
+          <el-button icon="el-icon-menu" slot="reference" circle></el-button>
         </el-popover>
       </div>
       <div class="action">
@@ -31,14 +37,14 @@
           v-model="visible2">
           <p style="margin: 10px">Comparte este proyecto con los tuyos:</p>
           <div style="text-align: center; margin: 10px 0">
-            <facebook-share-button class="share-button" scale="2" />
-            <twitter-share-button class="share-button" scale="2" title="Documental: La travesía de los caracoles" />
-            <whatsapp-share-button class="share-button" scale="2" title="Documental: La travesía de los caracoles" />
-            <telegram-share-button class="share-button" scale="2" title="Documental: La travesía de los caracoles" />
-            <pinterest-share-button class="share-button" scale="2" />
-            <email-share-button class="share-button" scale="2" subject="Documental: La travesía de los caracoles" />
+            <facebook-share-button class="share-button" scale="2" url="https://latravesiadeloscaracoles.netlify.com/#/" />
+            <twitter-share-button class="share-button" scale="2" url="https://latravesiadeloscaracoles.netlify.com/#/" title="Documental: La travesía de los caracoles" />
+            <whatsapp-share-button class="share-button" scale="2" url="https://latravesiadeloscaracoles.netlify.com/#/" title="Documental: La travesía de los caracoles" />
+            <telegram-share-button class="share-button" scale="2" url="https://latravesiadeloscaracoles.netlify.com/#/" title="Documental: La travesía de los caracoles" />
+            <pinterest-share-button class="share-button" scale="2" url="https://latravesiadeloscaracoles.netlify.com/#/" />
+            <email-share-button class="share-button" scale="2" url="https://latravesiadeloscaracoles.netlify.com/#/" subject="Documental: La travesía de los caracoles" />
           </div>
-          <el-button icon="el-icon-share" slot="reference"></el-button>
+          <el-button icon="el-icon-share" slot="reference" circle></el-button>
         </el-popover>
       </div>
     </div>
@@ -82,19 +88,7 @@ export default {
     display: inline-block;
   }
 
-  .action i {
-    font-size: 30px;
-  }
-
-  .plain-link:link, .plain-link:visited {
-    text-decoration: none;
-    color: black;
-    display: inline-block;
-    text-align: center;
-    margin: 5px;
-  }
-
-  .buble {
+  /* .buble {
     position: absolute;
     height: 60px;
     z-index: -1;
@@ -108,6 +102,14 @@ export default {
     z-index: -1;
     left: calc(50vw);
     top: 10px;
+  } */
+
+  .plain-link:link, .plain-link:visited {
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    text-align: center;
+    margin: 5px;
   }
 
   .map {

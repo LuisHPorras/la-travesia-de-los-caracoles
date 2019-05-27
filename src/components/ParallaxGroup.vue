@@ -1,16 +1,18 @@
 <template>
-  <div
+  <section
     class="parallax__group"
     :style="{'z-index': depth}"
   >
+    <a name="name" />
     <slot></slot>
-  </div>
+  </section>
 </template>
 
 <script>
 export default {
   name: 'ParallaxGroup',
   props: {
+    name: String,
     depth: Number
   }
 }

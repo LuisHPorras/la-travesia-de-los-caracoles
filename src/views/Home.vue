@@ -8,47 +8,52 @@
     <!-- First parallax scene -->
     <div class="container1">
       <Parallax :perspective="300" horizontal>
-        <ParallaxGroup :depth="5">
-          <ParallaxLayer position="base" >
-            <transition name="slide-fade-title">
-              <div v-on:load="onLoaded" v-show="loaded" class="title">La travesía de los caracoles</div>
-            </transition>
-          </ParallaxLayer>
+        <ParallaxGroup id="g1" :depth="5">
           <ParallaxLayer position="base" >
             <transition name="fade" >
               <img class="float" v-on:load="onLoaded" v-show="loaded" style="height: 100%" src="../assets/images/caracol.png" alt="Caracol">
             </transition>
           </ParallaxLayer>
+          <ParallaxLayer position="base" >
+            <div>
+              <transition name="slide-fade-title">
+                <div v-on:load="onLoaded" v-show="loaded" class="title">La travesía de los caracoles</div>
+              </transition>
+              <transition name="fade">
+                <div v-on:load="onLoaded" v-show="loaded" class="advise1">Desliza horizontalmente</div>
+              </transition>
+            </div>
+          </ParallaxLayer>
         </ParallaxGroup>
 
-        <ParallaxGroup :depth="3">
+        <ParallaxGroup id="g2" :depth="3">
           <ParallaxLayer position="base">
-            <!-- <div class="video">
+            <div class="video">
               <promo-v class="video-player-box" ref="videoPlayer" :options="playerOptions" />
-            </div> -->
+            </div>
             <div style="height: 100%; width: 100%; background-color: white" />
           </ParallaxLayer>
         </ParallaxGroup>
 
-        <ParallaxGroup :depth="3">
+        <ParallaxGroup id="g3" :depth="3">
           <ParallaxLayer position="base">
             <img style="height: 100%" src="../assets/images/1.png" alt="Pared1">
           </ParallaxLayer>
         </ParallaxGroup>
 
-        <ParallaxGroup :depth="4">
+        <ParallaxGroup id="g4" :depth="4">
           <ParallaxLayer position="base">
             <img style="height: 100%" src="../assets/images/2.png" alt="Pared2">
           </ParallaxLayer>
         </ParallaxGroup>
 
-        <ParallaxGroup :depth="3">
+        <ParallaxGroup id="g5" :depth="3">
           <ParallaxLayer position="base">
               <img style="height: 100%" src="../assets/images/3.png" alt="Pared3">
           </ParallaxLayer>
         </ParallaxGroup>
 
-        <ParallaxGroup :depth="2">
+        <ParallaxGroup id="g6" :depth="2">
           <ParallaxLayer position="base">
             <img style="height: 100%" src="../assets/images/4puertas.png" alt="Puertas">
           </ParallaxLayer>
@@ -60,13 +65,15 @@
           </ParallaxLayer>
         </ParallaxGroup>
         <ParallaxGroup></ParallaxGroup>
-        <ParallaxGroup :depth="3">
+
+        <ParallaxGroup id="g7" :depth="3">
           <ParallaxLayer position="base">
               <img style="height: 100%" src="../assets/images/3.png" alt="Pared3">
           </ParallaxLayer>
         </ParallaxGroup>
       </Parallax>
     </div>
+    <Footer />
   </div>
 </template>
 
@@ -75,6 +82,7 @@ import 'video.js/dist/video-js.css'
 import { videoPlayer } from 'vue-video-player'
 
 import Header from '../components/Header.vue'
+import Footer from '../components/Footer.vue'
 import Parallax from '../components/Parallax.vue'
 import ParallaxGroup from '../components/ParallaxGroup.vue'
 import ParallaxLayer from '../components/ParallaxLayer.vue'
@@ -99,20 +107,22 @@ export default {
   },
   components: {
     Header,
+    Footer,
     Parallax,
     ParallaxGroup,
     ParallaxLayer,
     'promo-v': videoPlayer
   },
-  mounted () {
-    var imgPath = '../assets/'
-    var imgs = ['4puertas.png', '1.png', '2.png', '3.png', 'interior1.png', 'interior2.png']
-    for (let i = 0; i < imgs.length; i++) {
-      const imgSrc = imgPath + imgs[i]
-      let newImg = new Image()
-      newImg.src = imgSrc
-    }
-  },
+  // mounted () {
+  //   // // Load images
+  //   // var imgPath = '../assets/'
+  //   // var imgs = ['4puertas.png', '1.png', '2.png', '3.png', 'interior1.png', 'interior2.png']
+  //   // for (let i = 0; i < imgs.length; i++) {
+  //   //   const imgSrc = imgPath + imgs[i]
+  //   //   let newImg = new Image()
+  //   //   newImg.src = imgSrc
+  //   // }
+  // },
   methods: {
     onLoaded () {
       this.loaded = true
@@ -145,7 +155,6 @@ export default {
     position: relative;
     width: 131vh;
     height: 100vh;
-    /* background-color: green; */
     margin: 0 calc((100vw - 133.33333333vh)/2);
   }
 
@@ -158,6 +167,19 @@ export default {
   }
 
   .title {
+    font-size: medium;
+    font-style: italic;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .advise1 {
+    color: rgba(0,0,0,0.2);
+    font-size: 2.5vh;
     text-align: center;
     position: absolute;
     left: 50%;
@@ -167,7 +189,6 @@ export default {
   }
 
   .drawing {
-    /* border: 2px solid blue; */
     position: absolute;
     left: 50%;
     top: 50%;
@@ -197,9 +218,7 @@ export default {
   }
 
   .fade-enter-active {
-    /* transition: opacity 3s ease-in-out;
-     */
-    animation: delay-fade 4s ease-in-out;    
+    animation: delay-fade 4s ease-in-out;
   }
 
   @keyframes delay-fade{
@@ -214,17 +233,8 @@ export default {
     }
   }
 
-  /* .fade-enter-to {
-    opacity: 1;
-  }
-
-  .fade-enter {
-    opacity: 0;
-  } */
-
   .slide-fade-title-enter-active {
     animation: delay-slide-fade 2s ease;
-    /* transition: all 2s ease; */
   }
 
   @keyframes delay-slide-fade{
@@ -243,11 +253,6 @@ export default {
     }
   }
 
-  /* .slide-fade-title-enter {
-    transform: translate(-200px, 100px);
-    opacity: 0;
-  } */
-
   .slide-fade-actions-enter-active {
     transition: all 0.8s ease;
   }
@@ -257,5 +262,4 @@ export default {
     opacity: 0;
   }
 
-  
 </style>

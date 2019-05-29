@@ -132,23 +132,9 @@ export default {
 </script>
 
 <style>
-
-  body, html {
-    overflow: hidden;
-  }
-
-  body {
-    font: 100% / 1.5 Arial;
-  }
-
   * {
     margin:0;
     padding:0;
-  }
-
-  .background {
-    background-color: white;
-    align-content: center;
   }
 
   .container1 {

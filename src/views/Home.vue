@@ -99,9 +99,9 @@ export default {
         playbackRates: [0.7, 1.0, 1.5, 2.0],
         sources: [{
           type: 'video/mp4',
-          src: '../assets/videos/new-house.mp4'
+          src: 'http://menceymelgar.com/luis/promo.mp4'
         }],
-        poster: '../assets/images/poster-promo.png'
+        poster: 'localhost:8080/assets/images/poster-promo.png'
       }
     }
   },

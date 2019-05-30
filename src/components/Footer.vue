@@ -4,9 +4,7 @@
         <a class="plain-link el-icon-arrow-left circle" @click="updateSectionButtons()" :href="'#' + prevSection" />
       </div>
       <div class="footer-action">
-        <a class="plain-link circle" @click="updateSectionButtons()" :href="'#' + nextSection" >
-          <div class="el-icon-arrow-right" style="{ vertical-align: 'middle' }"></div>
-        </a>
+        <a class="plain-link el-icon-arrow-right circle" @click="updateSectionButtons()" :href="'#' + nextSection" />
       </div>
     </div>
 </template>
@@ -84,12 +82,20 @@ export default {
   }
 
   .footer-action {
-    padding: 15px 0;
+    padding: 0;
     display: inline-block;
   }
 
-  .plain-link {
+  .plain-link:link {
     text-decoration: none;
-    vertical-align: middle;
+    font-size: 48px;
+    margin: 4vw 5vh;
+    color: rgba(0,0,0,0.2);
+  }
+
+  .plain-link:hover {
+    text-decoration: none;
+    font-size: 48px;
+    color: rgba(0,0,0,0.8);
   }
 </style>

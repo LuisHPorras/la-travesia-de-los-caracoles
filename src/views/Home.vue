@@ -1,5 +1,5 @@
 <template>
-  <div class="background">
+  <div>
     <!-- User Actions -->
     <transition name="slide-fade-actions">
       <Header v-on:load="onLoaded" v-show="loaded" />
@@ -113,16 +113,16 @@ export default {
     ParallaxLayer,
     'promo-v': videoPlayer
   },
-  // mounted () {
-  //   // // Load images
-  //   // var imgPath = '../assets/'
-  //   // var imgs = ['4puertas.png', '1.png', '2.png', '3.png', 'interior1.png', 'interior2.png']
-  //   // for (let i = 0; i < imgs.length; i++) {
-  //   //   const imgSrc = imgPath + imgs[i]
-  //   //   let newImg = new Image()
-  //   //   newImg.src = imgSrc
-  //   // }
-  // },
+  mounted () {
+    // Load images
+    var imgPath = '../assets/'
+    var imgs = ['4puertas.png', '1.png', '2.png', '3.png', 'interior1.png', 'interior2.png']
+    for (let i = 0; i < imgs.length; i++) {
+      const imgSrc = imgPath + imgs[i]
+      let newImg = new Image()
+      newImg.src = imgSrc
+    }
+  },
   methods: {
     onLoaded () {
       this.loaded = true
@@ -153,12 +153,11 @@ export default {
   }
 
   .title {
-    font-size: medium;
     font-style: italic;
     text-align: center;
     position: absolute;
     left: 50%;
-    top: 70%;
+    top: 80%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
   }

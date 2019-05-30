@@ -9,7 +9,8 @@
 
 <style>
 body {
-  margin: 0;
+  background-color: white;
+  align-content: center;
 }
 
 #app {

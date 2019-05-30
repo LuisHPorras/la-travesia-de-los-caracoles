@@ -1,5 +1,5 @@
 <template>
-  <div class="background">
+  <div>
     <!-- User Actions -->
     <transition name="slide-fade-actions">
       <Header v-on:load="onLoaded" v-show="loaded" />
@@ -19,9 +19,9 @@
               <transition name="slide-fade-title">
                 <div v-on:load="onLoaded" v-show="loaded" class="title">La travesía de los caracoles</div>
               </transition>
-              <transition name="fade">
+              <!-- <transition name="fade">
                 <div v-on:load="onLoaded" v-show="loaded" class="advise1">Desliza horizontalmente</div>
-              </transition>
+              </transition> -->
             </div>
           </ParallaxLayer>
         </ParallaxGroup>
@@ -99,9 +99,9 @@ export default {
         playbackRates: [0.7, 1.0, 1.5, 2.0],
         sources: [{
           type: 'video/mp4',
-          src: '../assets/videos/promo.mp4'
+          src: 'http://menceymelgar.com/luis/promo.mp4'
         }],
-        poster: '../assets/images/poster-promo.png'
+        poster: 'localhost:8080/assets/images/poster-promo.png'
       }
     }
   },
@@ -113,16 +113,16 @@ export default {
     ParallaxLayer,
     'promo-v': videoPlayer
   },
-  // mounted () {
-  //   // // Load images
-  //   // var imgPath = '../assets/'
-  //   // var imgs = ['4puertas.png', '1.png', '2.png', '3.png', 'interior1.png', 'interior2.png']
-  //   // for (let i = 0; i < imgs.length; i++) {
-  //   //   const imgSrc = imgPath + imgs[i]
-  //   //   let newImg = new Image()
-  //   //   newImg.src = imgSrc
-  //   // }
-  // },
+  mounted () {
+    // Load images
+    var imgPath = '../assets/'
+    var imgs = ['4puertas.png', '1.png', '2.png', '3.png', 'interior1.png', 'interior2.png']
+    for (let i = 0; i < imgs.length; i++) {
+      const imgSrc = imgPath + imgs[i]
+      let newImg = new Image()
+      newImg.src = imgSrc
+    }
+  },
   methods: {
     onLoaded () {
       this.loaded = true
@@ -132,23 +132,9 @@ export default {
 </script>
 
 <style>
-
-  body, html {
-    overflow: hidden;
-  }
-
-  body {
-    font: 100% / 1.5 Arial;
-  }
-
   * {
     margin:0;
     padding:0;
-  }
-
-  .background {
-    background-color: white;
-    align-content: center;
   }
 
   .container1 {
@@ -167,12 +153,11 @@ export default {
   }
 
   .title {
-    font-size: medium;
     font-style: italic;
     text-align: center;
     position: absolute;
     left: 50%;
-    top: 70%;
+    top: 80%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
   }

@@ -3,9 +3,9 @@
     class="parallax__layer"
     :class="['parallax__layer--' + position]"
   >
-    <transition name="fade">
+    <!-- <transition-group name="fade"> -->
       <slot v-on:load="onLoaded" v-show="loaded"></slot>
-    </transition>
+    <!-- </transition-group> -->
   </div>
 </template>
 

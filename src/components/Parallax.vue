@@ -8,7 +8,7 @@
   <div
     class="parallax"
     @scroll="verticalToHorizontal($event)"
-    @wheel.prevent="verticalToHorizontal($event)"
+    @wheel="verticalToHorizontal($event)"
     :class="{
       'debug-on': checked,
       'is-horizontal': horizontal

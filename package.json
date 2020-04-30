@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "element-ui": "^2.6.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "video.js": "^7.5.4",
     "vue": "^2.6.6",
     "vue-router": "^3.0.1",
